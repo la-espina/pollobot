@@ -16,7 +16,7 @@ for looking up products matching with a defined keywords list. The scrapped data
 + telepot 
   
 For installing the dependencies just run
-``pip install scrapy telepot
+```pip install scrapy telepot
 ```
 
 #### Runing the script
@@ -25,6 +25,7 @@ Once you have installed the dependencies, just run:
 
 ```python
 python start.py
+
 ```
 
 ❗ Feel free to mod, comment, share, distribute and contribute for improvement if you want. 
@@ -36,4 +37,9 @@ python start.py
 
 Usamos [telepot](https://telepot.readthedocs.io/en/latest/index.html) para la interacción con telegram 
 
+#### Para correrlo
+```python
+python start.py
+python foodwatch/pollocubaBot.py
+```
 
