@@ -1,28 +1,31 @@
 import json
 import zlib
-from win10toast import ToastNotifier
 from platform import system
 import subprocess
+if system() == 'Windows':
+    from win10toast import ToastNotifier
+
 
 def sendmessage(message):
     subprocess.Popen(['notify-send', message])
     return
+
+
 class Helpers:
 
     @staticmethod
     def firetoast(value: int, pcount: int) -> None:
-        place = ['Cuatro Caminos', 'Carlos Tercero',  '5tay42']
+        place = ['Cuatro Caminos', 'Carlos Tercero', '5tay42']
         print("%s productos encontrados" % str(pcount))
+        
         if system() == 'Windows':
             toaster = ToastNotifier()
-            toaster.show_toast(
-                "Productos encontrados en " + place[value],
-                "%s productos encontrados" % str(pcount),
-                duration=30
-            )
-        elif system== 'Linux':
-            sendmessage("Productos encontrados en " + place[value],
-                "%s productos encontrados" % str(pcount))
+            toaster.show_toast("Productos encontrados en " + place[value],
+                               "%s productos encontrados" % str(pcount),
+                               duration=30)
+        elif system() == 'Linux':
+            sendmessage("Productos encontrados en " + place[value])
+                        # "%s productos encontrados" % str(pcount))
         else:
             pass
 
@@ -32,9 +35,10 @@ class Helpers:
         Create a deterministic hash from product name and price
         """
         if pprice != None and pname != None:
-            strenc = (pname+pprice).encode()
+            strenc = (pname + pprice).encode()
             return str(zlib.adler32(strenc))
-        else: return ""
+        else:
+            return ""
 
     @staticmethod
     def ispresent(phash: str) -> bool:
@@ -47,5 +51,4 @@ class Helpers:
                     return True
 
         return False
-
 
