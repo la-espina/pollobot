@@ -1,21 +1,30 @@
 import json
 import zlib
 from win10toast import ToastNotifier
+from platform import system
+import subprocess
 
-
+def sendmessage(message):
+    subprocess.Popen(['notify-send', message])
+    return
 class Helpers:
 
     @staticmethod
     def firetoast(value: int, pcount: int) -> None:
         place = ['Cuatro Caminos', 'Carlos Tercero',  '5tay42']
-        toaster = ToastNotifier()
-
         print("%s productos encontrados" % str(pcount))
-        toaster.show_toast(
-            "Productos encontrados en " + place[value],
-            "%s productos encontrados" % str(pcount),
-            duration=30
-        )
+        if system() == 'Windows':
+            toaster = ToastNotifier()
+            toaster.show_toast(
+                "Productos encontrados en " + place[value],
+                "%s productos encontrados" % str(pcount),
+                duration=30
+            )
+        elif system== 'Linux':
+            sendmessage("Productos encontrados en " + place[value],
+                "%s productos encontrados" % str(pcount))
+        else:
+            pass
 
     @staticmethod
     def mkhash(pname: str, pprice: str) -> str:
@@ -38,3 +47,5 @@ class Helpers:
                     return True
 
         return False
+
+
