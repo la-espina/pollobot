@@ -16,7 +16,10 @@ for looking up products matching with a defined keywords list. The scrapped data
 + telepot 
   
 For installing the dependencies just run
-```pip install scrapy telepot
+
+```
+pip install scrapy telepot
+
 ```
 
 #### Runing the script
