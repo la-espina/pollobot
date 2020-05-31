@@ -12,12 +12,13 @@ for looking up products matching with a defined keywords list. The scrapped data
 #### Dependecies
 
 + scrapy
-+ win10toast
-
++ win10toast (Windows only)
++ telepot 
+  
 For installing the dependencies just run
-```ptyhon
-pip install scrapy win10toast
+```ptyhon install_deps.py
 ```
+
 #### Runing the script
 
 Once you have installed the dependencies, just run:
@@ -30,6 +31,8 @@ python start.py
 
 *It's recommendable to run the script from cronjob or windows task manager for auto running.*
 
+#### Telegram 
+ Añadimos la conexión con un bot de Telegram y modificamos el scrapper para que buscara en todos los departamentos de las tiendas   en vez de solo palabras clave
 
 
 
