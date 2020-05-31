@@ -34,6 +34,6 @@ python start.py
 #### Telegram 
  Añadimos la conexión con un bot de Telegram y modificamos el scrapper para que buscara en todos los departamentos de las tiendas   en vez de solo palabras clave
 
-
+Usamos [telepot](https://telepot.readthedocs.io/en/latest/index.html) para la interacción con telegram 
 
 
