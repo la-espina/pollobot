@@ -14,6 +14,7 @@ last=[]
 current={}
 
 def posttry(msg):
+    """ Enviar mensajes al grupo por el id """
     try:
         Telegrambot.sendMessage(-429014316,msg,parse_mode="Markdown")
     except:  
