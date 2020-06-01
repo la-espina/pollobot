@@ -5,3 +5,5 @@ idea/*.xhtml
 idea/*.xml
 /workspace.xml
 *.jl
+foodwatch/__pycache__/*.pyc 
+foodwatch/spiders/*.pyc 
