@@ -17,6 +17,7 @@ class XetidSpider(scrapy.Spider):
             for dep in xetidep[tienda]:
                 url="https://{}.xetid.cu/{}".format(tienda,dep)
                 self.tienda=tienda
+                self.url=url
                 yield scrapy.Request(url=url, callback=self.parse)
                 
 
@@ -34,6 +35,6 @@ class XetidSpider(scrapy.Spider):
 
             if Helpers.ispresent(phash) is False:
                 count += 1
-                yield {'place':self.tienda,'product': pname, 'price': pprice, 'chk': phash}
+                yield {'place':self.tienda,'product': pname, 'price': pprice, 'chk': phash,'url':self.url }
 
         # if count > 0: Helpers.firetoast(2, count)

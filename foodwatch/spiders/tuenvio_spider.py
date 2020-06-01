@@ -17,6 +17,7 @@ class TuEnvioSpider(scrapy.Spider):
             for dep in departments[tienda]:
                 url="https://www.tuenvio.cu/{}/Products?depPid={}".format(tienda,dep)
                 self.tienda=tienda
+                self.url=url
                 yield scrapy.Request(url=url, callback=self.parse)
 
     def parse(self, response):
@@ -32,6 +33,6 @@ class TuEnvioSpider(scrapy.Spider):
 
             if Helpers.ispresent(phash) is False:
                 count += 1
-                yield {'place':self.tienda,'product': pname, 'price': pprice, 'chk': phash}
+                yield {'place':self.tienda,'product': pname, 'price': pprice, 'chk': phash, 'url':self.url}
         # print('Count:',count)
         # if count > 0: Helpers.firetoast(0, count)
