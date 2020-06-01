@@ -12,13 +12,19 @@ curlog='data.jl'
 
 last=[]
 current={}
-
+tiendas={
+    '4caminos':'Cuatro Caminos',
+    'carlos3':'Carlos III',
+    'tipicaboyeros':'Tipica Boyeros',
+    'caribehabana':'Villa Diana',
+    '5tay42':'5ta y 42'
+}
 def posttry(msg):
     """ Enviar mensajes al grupo por el id """
     try:
-        Telegrambot.sendMessage(-429014316,msg,parse_mode="Markdown")
+        Telegrambot.sendMessage(-1001334786762,msg,parse_mode="Markdown")
     except:  
-        print('Demasiados request. Esperando 5..')
+        print('Demasiados request. Esperando 5...')
         time.sleep(5)
         posttry(msg)
         
@@ -30,14 +36,14 @@ with open(lastlog) as file:
 with open(curlog) as file:
     for line in file:
         decd  = json.loads(line)
-        current[decd['chk']]={'product':decd['product'],'place':decd['place'], 'price':decd['price']   }
+        current[decd['chk']]={'product':decd['product'],'place':tiendas[decd['place']], 'price':decd['price'],'url':decd['url']   }
         
 
 
 
 for prod in current.keys():
     if prod not in last:
-        msg="{} {}  \n *{}*   ".format(current[prod]['product'],current[prod]['price'],current[prod]['place']  )
+        msg="{} {}  \n [{}]({})   ".format(current[prod]['product'],current[prod]['price'],current[prod]['place'],current[prod]['url']   )
         print(msg)
         time.sleep(1)
         posttry(msg)
@@ -48,4 +54,4 @@ for prod in current.keys():
         #     time.sleep(5)
         #     Telegrambot.sendMessage(-429014316,msg,parse_mode="Markdown")
 
-os.system('mv '+curlog+' '+lastlog)
+os.system('cp '+curlog+' '+lastlog)
