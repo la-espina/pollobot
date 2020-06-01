@@ -1,0 +1,6 @@
+#!/bin/bash
+source /home/miguel/.bashrc
+touch /tmp/runpollobot
+pwd>/tmp/runpollobot
+python3 /home/miguel/BigData6/Projects/pollobot/start.py 
+python3 /home/miguel/BigData6/Projects/pollobot/foodwatch/pollocubaBot.py

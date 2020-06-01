@@ -7,7 +7,7 @@ configfile=os.path.expanduser('~/.pollobotconfig')
 config = json.loads(open(configfile).read())
 
 if config['proxy']['active'] == 'yes':
-    telepot.api.set_proxy(config['proxy']['url'],(config['proxy']['user'],configp['proxy']['pass']))
+    telepot.api.set_proxy(config['proxy']['url'],(config['proxy']['user'],config['proxy']['pass']))
 
 token='1273095502:AAGblLlUtscDMGh3K40rssw3NJbsa705XCg'  
 Telegrambot=telepot.Bot(token)
