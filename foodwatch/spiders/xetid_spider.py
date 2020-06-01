@@ -23,6 +23,7 @@ class XetidSpider(scrapy.Spider):
 
     def parse(self, response):
         count = 0
+        tienda=response.request.url.split("/")[3]
         
         for product in response.css("ul#listado-prod div.product-container"):
             pname = product.css("div.product-image-container a.product_img_link").xpath('@title').get()
@@ -35,6 +36,6 @@ class XetidSpider(scrapy.Spider):
 
             if Helpers.ispresent(phash) is False:
                 count += 1
-                yield {'place':self.tienda,'product': pname, 'price': pprice, 'chk': phash,'url':response.request.url }
+                yield {'place':tienda,'product': pname, 'price': pprice, 'chk': phash,'url':response.request.url }
 
         # if count > 0: Helpers.firetoast(2, count)
