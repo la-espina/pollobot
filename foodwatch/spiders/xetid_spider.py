@@ -16,14 +16,14 @@ class XetidSpider(scrapy.Spider):
         for tienda in xetidep.keys():
             for dep in xetidep[tienda]:
                 url="https://{}.xetid.cu/{}".format(tienda,dep)
-                self.tienda=tienda
+                # self.tienda=tienda
                 self.url=url
                 yield scrapy.Request(url=url, callback=self.parse)
                 
 
     def parse(self, response):
         count = 0
-
+        
         for product in response.css("ul#listado-prod div.product-container"):
             pname = product.css("div.product-image-container a.product_img_link").xpath('@title').get()
             pprice = product.css("div.right-block div.content_price span.price::text").get()
@@ -35,6 +35,6 @@ class XetidSpider(scrapy.Spider):
 
             if Helpers.ispresent(phash) is False:
                 count += 1
-                yield {'place':self.tienda,'product': pname, 'price': pprice, 'chk': phash,'url':self.url }
+                yield {'place':self.tienda,'product': pname, 'price': pprice, 'chk': phash,'url':response.request.url }
 
         # if count > 0: Helpers.firetoast(2, count)
