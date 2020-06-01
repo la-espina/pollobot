@@ -23,7 +23,7 @@ class XetidSpider(scrapy.Spider):
 
     def parse(self, response):
         count = 0
-        tienda=response.request.url.split("/")[3]
+        tienda=response.request.url.split("/")[2].split(".")[0]
         
         for product in response.css("ul#listado-prod div.product-container"):
             pname = product.css("div.product-image-container a.product_img_link").xpath('@title').get()

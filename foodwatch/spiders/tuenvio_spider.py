@@ -4,7 +4,7 @@ from ..helpers import Helpers
 from foodwatch.keywords import wordpool,departments
 
 class TuEnvioSpider(scrapy.Spider):
-    name = "caminos"
+    name = "tuenvio"
     timeflag = False
 
 
