@@ -8,24 +8,25 @@ from foodwatch.spiders.quintaalt_spider import QuintaaltSpider
 from foodwatch.spiders.tuenvio_spider import TuEnvioSpider
 from foodwatch.spiders.xetid_spider import XetidSpider
 from os import system
-settings = get_project_settings()
-process = CrawlerProcess(settings)
-# process = CrawlerProcess()
-
-# process.crawl(Carlos3Spider)
-# process.crawl(CaminosSpider)
-# process.crawl(QuintaSpider)
-# process.crawl(QuintaaltSpider)
 
 while True:
+    settings = get_project_settings()
+    process = CrawlerProcess(settings)
+    #    process = CrawlerProcess()
+
+    #   process.crawl(Carlos3Spider)
+    #   process.crawl(CaminosSpider)
+    #   process.crawl(QuintaSpider)
+    #   process.crawl(QuintaaltSpider)
+
     print('Initializing crawlers')
     process.crawl(TuEnvioSpider)
     process.crawl(XetidSpider)
 
-    lastlog='last_data.jl'
-    curlog='data.jl'
+    lastlog = 'last_data.jl'
+    curlog = 'data.jl'
 
     print('foodwatch [CRAWLING ...]')
-    process.start()     # the script will block here until all crawling jobs are finished
-    system('mv '+curlog+' '+lastlog)
+    process.start()  # the script will block here until all crawling jobs are finished
+    system('mv ' + curlog + ' ' + lastlog)
     print('foodwatch [DONE]')
