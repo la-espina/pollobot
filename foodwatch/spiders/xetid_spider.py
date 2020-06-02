@@ -24,7 +24,7 @@ class XetidSpider(scrapy.Spider):
     def parse(self, response):
         count = 0
         tienda=response.request.url.split("/")[2].split(".")[0]
-        
+        bot=PolloBot()
         for product in response.css("ul#listado-prod div.product-container"):
             pname = product.css("div.product-image-container a.product_img_link").xpath('@title').get()
             pprice = product.css("div.right-block div.content_price span.price::text").get()
@@ -36,6 +36,8 @@ class XetidSpider(scrapy.Spider):
 
             if Helpers.ispresent(phash) is False:
                 count += 1
+                msg="{}\n_{}_\n[{}]({})   ".format(pname,pprice,tienda,response.request.url)
+                bot.posttry(msg)
                 yield {'place':tienda,'product': pname, 'price': pprice, 'chk': phash,'url':response.request.url }
 
         # if count > 0: Helpers.firetoast(2, count)

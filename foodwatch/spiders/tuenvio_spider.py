@@ -2,6 +2,7 @@ import scrapy
 from datetime import datetime
 from ..helpers import Helpers
 from foodwatch.keywords import wordpool,departments
+from foodwatch.pollocubaBot import PolloBot
 
 class TuEnvioSpider(scrapy.Spider):
     name = "tuenvio"
@@ -25,7 +26,8 @@ class TuEnvioSpider(scrapy.Spider):
         count = 0
         tienda=response.request.url.split("/")[3]
         
-      
+        bot=PolloBot()
+        
         for product in response.css("div.thumbSetting"):
             pname = product.css("div.thumbTitle>a::text").get()
             pprice = product.xpath("div[2]/span/text()").get()
@@ -35,6 +37,8 @@ class TuEnvioSpider(scrapy.Spider):
          
             if Helpers.ispresent(phash) is False:
                 count += 1
+                msg="{}\n_{}_\n[{}]({})   ".format(pname,pprice,tienda,response.request.url)
+                bot.posttry(msg)
                 yield {'place':tienda,'product': pname, 'price': pprice, 'chk': phash, 'url':response.request.url}
         # print('Count:',count)
         # if count > 0: Helpers.firetoast(0, count)

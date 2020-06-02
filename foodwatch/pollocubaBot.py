@@ -72,4 +72,4 @@ tiendas={
         #     time.sleep(5)
         #     Telegrambot.sendMessage(-429014316,msg,parse_mode="Markdown")
 
-os.system('cp '+curlog+' '+lastlog)
+# os.system('cp '+curlog+' '+lastlog)
