@@ -45,10 +45,9 @@ class Helpers:
         """
          Check if a product hash is present in the data.jl
         """
-        with open('data.jl') as file:
+        with open('last_data.jl') as file:
             for line in file:
                 if json.loads(line).get("chk") == phash:
                     return True
 
         return False
-
