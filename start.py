@@ -19,6 +19,8 @@ process = CrawlerProcess(settings)
 process.crawl(TuEnvioSpider)
 process.crawl(XetidSpider)
 
-print('foodwatch [CRAWLING ...]')
-process.start()     # the script will block here until all crawling jobs are finished
-print('foodwatch [DONE]')
+
+while True:
+    print('foodwatch [CRAWLING ...]')
+    process.start()     # the script will block here until all crawling jobs are finished
+    print('foodwatch [DONE]')
