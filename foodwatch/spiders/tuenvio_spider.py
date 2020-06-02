@@ -39,6 +39,6 @@ class TuEnvioSpider(scrapy.Spider):
                 count += 1
                 msg="{}\n_{}_\n[{}]({})   ".format(pname,pprice,tienda,response.request.url)
                 bot.posttry(msg)
-                yield {'place':tienda,'product': pname, 'price': pprice, 'chk': phash, 'url':response.request.url}
+            yield {'place':tienda,'product': pname, 'price': pprice, 'chk': phash, 'url':response.request.url}
         # print('Count:',count)
         # if count > 0: Helpers.firetoast(0, count)
