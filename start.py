@@ -17,13 +17,14 @@ process = CrawlerProcess(settings)
 # process.crawl(QuintaSpider)
 # process.crawl(QuintaaltSpider)
 
-process.crawl(TuEnvioSpider)
-process.crawl(XetidSpider)
-
-lastlog='last_data.jl'
-curlog='data.jl'
-
 while True:
+    print('Initializing crawlers')
+    process.crawl(TuEnvioSpider)
+    process.crawl(XetidSpider)
+
+    lastlog='last_data.jl'
+    curlog='data.jl'
+
     print('foodwatch [CRAWLING ...]')
     process.start()     # the script will block here until all crawling jobs are finished
     system('mv '+curlog+' '+lastlog)
