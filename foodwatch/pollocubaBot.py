@@ -50,7 +50,7 @@ with open(curlog) as file:
 
 for prod in current.keys():
     if prod not in last:
-        msg="{} {}  \n [{}]({})   ".format(current[prod]['product'],current[prod]['price'],current[prod]['place'],current[prod]['url']   )
+        msg="{}\n_{}_\n[{}]({})   ".format(current[prod]['product'],current[prod]['price'],current[prod]['place'],current[prod]['url']   )
         print(msg)
         time.sleep(1)
         posttry(msg)
