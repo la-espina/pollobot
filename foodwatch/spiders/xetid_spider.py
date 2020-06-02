@@ -2,6 +2,7 @@ import scrapy
 from datetime import datetime
 from ..helpers import Helpers
 from foodwatch.keywords import wordpool,xetidep
+from foodwatch.pollocubaBot import PolloBot
 
 
 class XetidSpider(scrapy.Spider):
