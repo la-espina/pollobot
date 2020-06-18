@@ -40,5 +40,5 @@ departments={
 }
 
 xetidep={
-    '5tay42':["","100001-alimentos","100012-bebidas-y-licores"]
+    '5tay42':["","100001-alimentos","100012-bebidas-y-licores","100016-belleza"]
 }
