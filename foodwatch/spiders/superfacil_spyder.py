@@ -39,7 +39,7 @@ class SuperfacilSpider(scrapy.Spider):
             if Helpers.ispresent(phash) is False:
                 count += 1
                 msg="{}\n_{}_\n[{}]({})   ".format(pname,pprice,tienda,response.request.url)
-                # bot.posttry(msg)
+                bot.posttry(msg)
                 # print(msg)
             yield {'place':tienda,'product': pname, 'price': pprice, 'chk': phash, 'url':response.request.url}
         # print('Count:',count)
