@@ -7,6 +7,8 @@ from foodwatch.spiders.carlos3_spider import Carlos3Spider
 from foodwatch.spiders.quintaalt_spider import QuintaaltSpider
 from foodwatch.spiders.tuenvio_spider import TuEnvioSpider
 from foodwatch.spiders.xetid_spider import XetidSpider
+from foodwatch.spiders.superfacil_spyder import SuperfacilSpider
+
 from os import system
 
 settings = get_project_settings()
@@ -20,6 +22,7 @@ process = CrawlerProcess(settings)
 print('Initializing crawlers')
 process.crawl(TuEnvioSpider)
 process.crawl(XetidSpider)
+process.crawl(SuperfacilSpider)
 
 lastlog = 'last_data.jl'
 curlog = 'data.jl'
