@@ -27,18 +27,19 @@ class SuperfacilSpider(scrapy.Spider):
         
         bot=PolloBot()
         
-        for product in response.css("figure.card-product figcaption.info-wrap"): 
-            pname = product.css("h6::text").get()
-            pprice = product.css("span.price-new::text").get()
+        for product in response.css("figure.card-product "): 
+            pname = product.css("figcaption.info-wrap h6::text").get()
+            pprice = product.css("figcaption.info-wrap span.price-new::text").get()
             
+            carrito = product.css("div.bottom-wrap button.btn i.fas").get()
             
-            if pname is None or pprice is None: continue
+            if pname is None or pprice is None or carrito is None: continue
             phash = Helpers.mkhash(pname, pprice)
          
             if Helpers.ispresent(phash) is False:
                 count += 1
                 msg="{}\n_{}_\n[{}]({})   ".format(pname,pprice,tienda,response.request.url)
-                bot.posttry(msg)
+                # bot.posttry(msg)
                 # print(msg)
             yield {'place':tienda,'product': pname, 'price': pprice, 'chk': phash, 'url':response.request.url}
         # print('Count:',count)
