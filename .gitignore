@@ -7,3 +7,4 @@ idea/*.xml
 *.jl
 foodwatch/__pycache__/*.pyc 
 foodwatch/spiders/*.pyc 
+nohup.out

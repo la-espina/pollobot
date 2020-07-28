@@ -16,7 +16,7 @@ class XetidSpider(scrapy.Spider):
         #     urls.append("https://5tay42.xetid.cu/module/categorysearch/catesearch?search_query="+keyword)
         for tienda in xetidep.keys():
             for dep in xetidep[tienda]:
-                url="https://{}.xetid.cu/{}".format(tienda,dep)
+                url="https://{}.enzona.net/{}".format(tienda,dep)
                 # self.tienda=tienda
                 self.url=url
                 yield scrapy.Request(url=url, callback=self.parse)
@@ -27,7 +27,7 @@ class XetidSpider(scrapy.Spider):
         tienda=response.request.url.split("/")[2].split(".")[0]
         bot=PolloBot()
         for product in response.css("ul#listado-prod div.product-container"):
-            pname = product.css("div.product-image-container a.product_img_link").xpath('@title').get()
+            pname = product.css("div.right-block a.product-name").xpath('@title').get()
             pprice = product.css("div.right-block div.content_price span.price::text").get()
 
             if pname is None or pprice is None: continue
